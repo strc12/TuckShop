@@ -1,9 +1,23 @@
 <?php
+
+
+try{
 	include_once('connection.php');
-	$stmt = $conn->prepare("SELECT * FROM TblTuck");
+	array_map("htmlspecialchars", $_POST);
+    print_r($_POST);
+
+	
+	$stmt = $conn->prepare("INSERT INTO TblTuck(TuckID,Tuckname,Tuckdescription,Quantity,Price)VALUES (NULL,:tuckname,:tuckdesc,:quantity,:price)");
+	$stmt->bindParam(':tuckname', $_POST["tuckname"]);
+	$stmt->bindParam(':tuckdesc', $_POST["description"]);
+    $stmt->bindParam(':quantity', $_POST["Quantity"]);
+    $stmt->bindParam(':price', $_POST["Price"]);
+
 	$stmt->execute();
-	while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
-		{
-			echo($row["Tuckname"].' '.$row["Tuckdescription"].' '.$row["Price"].' '.$row["Quantity"]."<br>");
-		}
-?>   
+	}
+catch(PDOException $e)
+{
+    echo "error".$e->getMessage();
+}
+$conn=null;
+?>
