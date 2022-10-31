@@ -4,7 +4,7 @@
 try{
 	include_once('connection.php');
 	array_map("htmlspecialchars", $_POST);
-    print_r($_POST);
+    
 
 	
 	$stmt = $conn->prepare("INSERT INTO TblTuck(TuckID,Tuckname,Tuckdescription,Quantity,Price)VALUES (NULL,:tuckname,:tuckdesc,:quantity,:price)");
