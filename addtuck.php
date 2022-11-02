@@ -1,5 +1,5 @@
 <?php
-
+header('Location: tuck.php');
 
 try{
 	include_once('connection.php');

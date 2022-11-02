@@ -16,10 +16,12 @@ try {
     $stmt1 = $conn->prepare("DROP TABLE IF EXISTS TblUser;
     CREATE TABLE TblUser 
     (UserID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(20) NOT NULL,
     Surname VARCHAR(20) NOT NULL,
     Forename VARCHAR(20) NOT NULL,
     Password VARCHAR(200) NOT NULL,
     Year INT(2) NOT NULL,
+    Balance DECIMAL(15,2) NOT NULL,
     Role TINYINT(1))");
     $stmt1->execute();
     $stmt1->closeCursor(); 
@@ -51,12 +53,12 @@ try {
     $stmt7->execute();
     $stmt7->closeCursor(); 
     $hashed_password = password_hash("password", PASSWORD_DEFAULT);
-    $stmt4 = $conn->prepare("INSERT INTO TblUser(UserID,Surname,Forename,Password,Year,Role)VALUES 
-    (NULL,'Cunniffe','Robert',:hp,13,1),
-    (NULL,'Strachan','Ally',:hp,13,1),
-    (NULL,'Smith','John',:hp,13,0),
-    (NULL,'Jones','Davy',:hp,13,0),
-    (NULL,'Patel','Nish',:hp,13,0)
+    $stmt4 = $conn->prepare("INSERT INTO TblUser(UserID,Username,Surname,Forename,Password,Year,Balance,Role)VALUES 
+    (NULL,'cunniffe.r','Cunniffe','Robert',:hp,13,10.00,1),
+    (NULL,'strachan.a','Strachan','Ally',:hp,13,2.00,1),
+    (NULL,'smith.j','Smith','John',:hp,13,18.00,0),
+    (NULL,'jones.d','Jones','Davy',:hp,13,2.51,0),
+    (NULL,'patel.n','Patel','Nish',:hp,13,8.60,0)
     ");
     $stmt4->bindParam(':hp', $hashed_password);
 
