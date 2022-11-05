@@ -11,9 +11,9 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
     $attempt= $_POST['Pword'];
     if(password_verify($attempt,$hashed)){
         echo("yay");
-        $_SESSION['name']=$row["Surname"];
+        $_SESSION['loggedinID']=$row["UserID"];
         if (!isset($_SESSION['backURL'])){
-            $backURL= "tuck.php";
+            $backURL= "buystuff.php";
         }else{
             $backURL=$_SESSION['backURL'];
         }
