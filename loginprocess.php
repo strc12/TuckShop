@@ -2,11 +2,14 @@
 session_start();
 include_once ("connection.php");
 array_map("htmlspecialchars", $_POST);
+print_r($_POST);
 $stmt = $conn->prepare("SELECT * FROM tbluser WHERE username =:username ;" );
 $stmt->bindParam(':username', $_POST['Username']);
 $stmt->execute();
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+if ($stmt->rowCount() > 0) {
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 { 
+    echo("sfdg");
     $hashed= $row['Password'];
     $attempt= $_POST['Pword'];
     if(password_verify($attempt,$hashed)){
@@ -18,13 +21,17 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
             $backURL=$_SESSION['backURL'];
         }
         
-        unset($_SESSION['backURL']);
-       
         header('Location: ' . $backURL);
+        unset($_SESSION['backURL']);
+        
+        
     }else{
-       echo("d");
         header('Location: login.php');
     }
 }
+  } else {
+    header('Location: login.php');
+  }
+
 $conn=null;
 ?>
