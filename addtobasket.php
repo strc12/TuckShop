@@ -18,7 +18,7 @@ foreach ($_SESSION["tuck"] as &$entry){//& allows us to change
     if ($entry["tuck"]===$_POST["TuckId"]){
         $found=TRUE;
         #increase basket by existing qty
-        $entry["qty"]=$entry["qty"]+$entry["qty"];
+        $entry["qty"]=$entry["qty"]+$_POST["qty"];
         
         
     }
