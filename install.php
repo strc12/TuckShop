@@ -41,7 +41,7 @@ try {
     (OrderID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     UserID INT(4),
     Dateoforder DATE,
-    Orderstatus INT(1) NOT NULL)");
+    Orderstatus INT(1))");
     $stmt3->execute();
     $stmt3->closeCursor(); 
 
@@ -49,7 +49,8 @@ try {
     CREATE TABLE TblBasket
     (OrderID INT(4),
     TuckID INT(4),
-    Quantity INT(2))");
+    Quantity INT(2),
+    PRIMARY KEY(OrderID, TuckID))");
     $stmt7->execute();
     $stmt7->closeCursor(); 
     $hashed_password = password_hash("password", PASSWORD_DEFAULT);

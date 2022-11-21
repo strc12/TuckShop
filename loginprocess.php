@@ -13,7 +13,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
         echo("yay");
         $_SESSION['loggedinID']=$row["UserID"];
         if (!isset($_SESSION['backURL'])){
-            $backURL= "buystuff.php";
+            $backURL= "menu.php";
         }else{
             $backURL=$_SESSION['backURL'];
         }

@@ -13,9 +13,6 @@
   <input type="submit" value="Login">
 </form>
 
-<?php
-session_start();
-echo ($_SESSION['backURL']);
-?>
+
 </body>
 </html>
