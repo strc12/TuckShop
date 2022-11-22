@@ -28,8 +28,10 @@
                 $total=$total+($tuck["qty"]*$row["Price"]);
             }
     }
+    //could do some colouring here to indicate if over balance...
     echo("<tr><td></td><td>Total cost </td><td>£".number_format($total,2)."</td></tr>");
-
+    //stores the basket total to subract from Balance
+    $_SESSION["totalcost"]=$total;
     ?>
     </table>
     <a href="buy.php">Confirm and order</a>
