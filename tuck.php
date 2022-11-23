@@ -1,4 +1,9 @@
-
+<?php
+session_start();
+	if($_SESSION["Role"]==0){
+		header('Location: menu.php');
+	}
+?>
 <!DOCTYPE html>
 <html>
 <title>Tuck</title>
@@ -15,6 +20,7 @@
 	<h1>Current tuck:</h1>
 <?php
 	include_once('connection.php');
+	
 	$stmt = $conn->prepare("SELECT * FROM TblTuck");
 	$stmt->execute();
 	while ($row = $stmt->fetch(PDO::FETCH_ASSOC))

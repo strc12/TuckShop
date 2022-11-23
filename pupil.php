@@ -1,3 +1,10 @@
+<?php
+session_start();
+	if($_SESSION["Role"]==0){
+		header('Location: menu.php');
+		//redirects if not admin might consider also similar if not logged in
+	}
+?>
 <!DOCTYPE html>
 <html>
 <title>Pupils</title>
