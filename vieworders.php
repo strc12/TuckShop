@@ -30,6 +30,6 @@
     
     ?>
     </table>
-   
+    <a href="menu.php">Back to menu</a>
 </body>
 </html>
