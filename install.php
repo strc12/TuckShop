@@ -40,7 +40,7 @@ try {
     CREATE TABLE TblOrders
     (OrderID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     UserID INT(4),
-    Dateoforder DATE,
+    Dateoforder DATETIME,
     Orderstatus INT(1))");
     $stmt3->execute();
     $stmt3->closeCursor(); 

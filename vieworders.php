@@ -18,8 +18,10 @@
         if ($stmt->rowCount() > 0) {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
             {echo'<form action="examineorder.php" method="post">';
-                echo($row["OrderID"].' '.$row["Dateoforder"]."
-                <input type='submit' value='View Order'><input type='hidden' name='OrderId' value=".$row['OrderID']."><br></form>");
+                print_r($row);
+                $phpdate = strtotime( $row["Dateoforder"] );
+                echo("Order number ".$row["OrderID"].' on '.date_format($row["Dateoforder"],"d/m/Y H:i:s"));
+                echo("<input type='submit' value='View Order'><input type='hidden' name='OrderId' value=".$row['OrderID']."><br></form>");
 
                 //echo("<tr><td>".$row["OrderID"]."</td><td> ".$row["Dateoforder"]." </td></tr>");
                 
