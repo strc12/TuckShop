@@ -35,7 +35,7 @@ try {
     Price DECIMAL(15,2) NOT NULL)");
     $stmt2->execute();
     $stmt2->closeCursor();
-
+    //note datetime allows time as well as date to be stored compared with just date
     $stmt3 = $conn->prepare("DROP TABLE IF EXISTS TblOrders;
     CREATE TABLE TblOrders
     (OrderID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,

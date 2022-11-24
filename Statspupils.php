@@ -20,7 +20,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
         $first=$row["Forename"];
         $second=$row["Surname"];
     }
-echo ("<h2>Order History for ".$first." ".$second."</h2>");
+echo ("<h2>Total tuck ordered for ".$first." ".$second."</h2>");
     $total=0;
 	$stmt = $conn->prepare("SELECT sum(tblbasket.Quantity) as cnt,tblorders.DateofOrder as dord, 
     tblorders.OrderID as orid ,tbltuck.Tuckname as tn, tbltuck.Price as tp, tblbasket.Quantity as qty 
@@ -32,12 +32,12 @@ echo ("<h2>Order History for ".$first." ".$second."</h2>");
 	$stmt->execute();
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 		{
-            $total=$total+($row["qty"]*$row["tp"]);
+            $total=$total+($row["cnt"]*$row["tp"]);
             echo("You ordered ".$row["cnt"]." x ".$row["tn"]."<br>");
 		}
 
-        echo("Total spent £".number_format($total,2)."<br>");
+        echo("<br>Total spent £".number_format($total,2)."<br>");
 ?>
-<a href="vieworders.php">Back to list of orders</a>
+<a href="menu.php">Back to menu</a>
 </body>
 </html>

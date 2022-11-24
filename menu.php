@@ -19,6 +19,7 @@ if ($_SESSION["Role"]==1){
 ?>
     <a href="buystuff.php">Create order</a><br>
     <a href="vieworders.php">view orders</a><br>
+    <a href="Statspupils.php">View Total purchases</a><br>
     <a href="logout.php">log out</a>
 </body>
 </html>
