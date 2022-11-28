@@ -24,7 +24,6 @@ if (isset($_SESSION["tuck"])){
 			<input type='submit' value='Add Tuck'><input type='hidden' name='TuckId' value=".$row['TuckID']."><br></form>");
 		}
 ?>   
-</form>
 <a href="checkout.php">Checkout</a>
 </body>
 </html>
